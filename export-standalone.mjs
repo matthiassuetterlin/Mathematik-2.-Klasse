@@ -7,8 +7,9 @@ if(!output)throw new Error('Bitte den vollständigen Pfad der HTML-Ausgabedatei 
 let html=await readFile(resolve(root,'dist/index.html'),'utf8');
 const css=await readFile(resolve(root,'dist/style.css'),'utf8');
 const model=(await readFile(resolve(root,'dist/model.js'),'utf8')).replace(/^export /gm,'');
-const app=(await readFile(resolve(root,'dist/app.js'),'utf8')).replace(/^import .*from '\.\/model\.js';\r?\n/,'');
-html=html.replace('<link rel="stylesheet" href="style.css">',()=>`<style>${css}</style>`).replace('<script type="module" src="app.js"></script>',()=>`<script>(()=>{\n${model}\n${app}\n})();</script>`);
+const material=(await readFile(resolve(root,'dist/material.js'),'utf8')).replace(/^export /gm,'');
+const app=(await readFile(resolve(root,'dist/app.js'),'utf8')).replace(/^\uFEFF/,'').replace(/^import .*from '\.\/(?:model|material)\.js';\r?\n/gm,'');
+html=html.replace('<link rel="stylesheet" href="style.css">',()=>`<style>${css}</style>`).replace('<script type="module" src="app.js"></script>',()=>`<script>(()=>{\n${model}\n${material}\n${app}\n})();</script>`);
 await mkdir(dirname(resolve(output)),{recursive:true});
 await writeFile(resolve(output),html,'utf8');
 console.log(resolve(output));

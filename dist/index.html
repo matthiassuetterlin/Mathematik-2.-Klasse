@@ -1,37 +1,38 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#214f63">
-  <meta name="description" content="Zahlen anfassen, zerlegen und verstehen. Eine spielerische Zahlenwerkstatt für die zweite Klasse.">
-  <title>Zahlenwerkstatt · Mathe zum Anfassen</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23214f63'/%3E%3Cg fill='%23fff'%3E%3Ccircle cx='10' cy='10' r='3'/%3E%3Ccircle cx='10' cy='22' r='3'/%3E%3Ccircle cx='22' cy='10' r='3'/%3E%3C/g%3E%3Ccircle cx='22' cy='22' r='3' fill='%23ed9954'/%3E%3C/svg%3E">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#256e65">
+  <meta name="description" content="Perlen teilen, Zehner bauen und Zahlen entdecken. Eine kleine Mathe-Werkstatt zum Anfassen.">
+  <title>Zahlenwerkstatt · Spielen mit Zahlen</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%23256e65'/%3E%3Cg fill='%23f7c75e'%3E%3Ccircle cx='10' cy='10' r='4'/%3E%3Ccircle cx='22' cy='10' r='4'/%3E%3Ccircle cx='10' cy='22' r='4'/%3E%3C/g%3E%3Ccircle cx='22' cy='22' r='4' fill='%23f19b78'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="./" aria-label="Zahlenwerkstatt, Start"><span class="brand-mark" aria-hidden="true">▦</span><span>Zahlen<span class="brand-light">werkstatt</span><small>MATHE ZUM ANFASSEN</small></span></a>
-    <button class="quiet" id="parent-open">Für Große <span aria-hidden="true">ⓘ</span></button>
+  <header class="header">
+    <a href="#" class="brand" aria-label="Zahlenwerkstatt, Anfang"><span class="brand-dots" aria-hidden="true">⠿</span>Zahlenwerkstatt</a>
+    <button id="parents" class="parent-button">Für Große</button>
   </header>
-  <div class="app-layout">
-    <aside class="sidebar" aria-label="Werkstätten">
-      <div class="sidebar-label">DEIN ENTDECKERWEG</div>
-      <nav>
-        <button class="nav-item" data-mode="split"><span class="nav-symbol" aria-hidden="true">◒</span><span>Teilen & entdecken<small>Aus einer Zahl werden zwei</small></span><span class="nav-number">1</span></button>
-        <button class="nav-item active" data-mode="bridge" aria-current="page"><span class="nav-symbol" aria-hidden="true">▦</span><span>Über die Zehn<small>Eine volle Zehn hilft dir</small></span><span class="nav-number">2</span></button>
-        <button class="nav-item" data-mode="free"><span class="nav-symbol" aria-hidden="true">▤</span><span>Freie Werkstatt<small>Baue deine eigenen Zahlen</small></span><span class="nav-number">3</span></button>
-      </nav>
-      <div class="sidebar-note"><span aria-hidden="true">✧</span><p>Hier darfst du<br>ausprobieren.</p><small>In deinem Tempo.<br>So oft du magst.</small></div>
-      <div class="sidebar-bottom">Kleine Schritte. Große Aha-Momente.</div>
-    </aside>
-    <main id="main">
-      <div class="page-heading"><div><p class="eyebrow" id="eyebrow">DIE ZEHNERBRÜCKE</p><h1 id="page-title">Mach die Zehn voll.</h1><p class="subtitle" id="subtitle">Nimm die fehlenden Steine aus der zweiten Zahl.</p></div><button class="quiet sound" id="speak" aria-label="Aufgabe vorlesen"><span aria-hidden="true">◖))</span> Vorlesen</button></div>
-      <div id="workspace"></div>
-      <footer class="main-footer"><span>Du darfst dir Zeit lassen.</span><span>Entdecken · Verstehen · Weiterdenken</span></footer>
-    </main>
-  </div>
-  <dialog id="parent-dialog" aria-labelledby="parent-title"><div class="dialog-heading"><h2 id="parent-title">Ein bisschen Begleitung</h2><button class="quiet" id="parent-close" aria-label="Schließen">✕</button></div><div id="parent-content"></div></dialog>
-  <div class="sr-only" id="announcer" aria-live="polite" aria-atomic="true"></div>
+  <main>
+    <nav class="shelf" aria-label="Material auswählen">
+      <button data-mode="split" aria-label="Teilen"><span class="nav-material split-icon" aria-hidden="true"><i></i><i></i><b></b><i></i><i></i><i></i></span><span>Teilen</span></button>
+      <button data-mode="bridge" aria-label="Zehnerbrücke" aria-current="page"><span class="nav-material frame-icon" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><b></b><b></b></span><span>Zur Zehn</span></button>
+      <button data-mode="bank" aria-label="Freies Bauen"><span class="nav-material rod-icon" aria-hidden="true"><i></i><i></i><b></b><b></b></span><span>Bauen</span></button>
+    </nav>
+    <section class="workbench" aria-label="Arbeitsmatte">
+      <div class="task-header">
+        <div><h1 id="prompt">Mach die Zehn voll.</h1><div id="equation" class="equation" aria-live="polite"></div></div>
+        <div class="helpers"><button id="demo" class="helper" aria-label="Handlung vormachen"><span aria-hidden="true">▷</span><small>Zeig’s mir</small></button><button id="sound" class="helper icon-only" aria-label="Ton einschalten" aria-pressed="false"><span aria-hidden="true">♪</span></button></div>
+      </div>
+      <div id="scene-wrap"><svg id="scene" viewBox="0 0 920 500" aria-label="Perlenmaterial zum Verschieben"></svg></div>
+      <div id="answer-area" aria-live="polite"></div>
+      <div class="bottom-bar"><div class="history-buttons"><button id="undo" class="round-button" aria-label="Letzte Handlung rückgängig" title="Zurück">↶</button><button id="reset" class="round-button" aria-label="Aufgabe von vorn" title="Nochmal">⟳</button></div><span id="small-hint" aria-live="polite"></span><button id="next" class="next-button" hidden>Weiter <span aria-hidden="true">›</span></button></div>
+    </section>
+
+  </main>
+  <dialog id="parent-dialog" aria-labelledby="parent-title"><div class="dialog-heading"><h2 id="parent-title">Für euch Große</h2><button id="close-dialog" class="round-button" aria-label="Schließen">×</button></div><div id="parent-copy"></div></dialog>
+  <div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
   <script type="module" src="app.js"></script>
 </body>
 </html>

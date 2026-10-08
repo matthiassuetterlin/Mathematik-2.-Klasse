@@ -8,25 +8,30 @@ Node.js installieren, im Projektordner `npm start` ausführen und http://127.0.0
 
 ## Lernbereiche
 
-- Teilen & entdecken: einen vorgegebenen Teil verschieben, Rest bestimmen, wieder zusammenführen.
-- Über die Zehn: Ergänzung aus dem zweiten Summanden nehmen, Rest bestimmen, Zehner und Rest zusammensetzen. Herkunftsplätze bleiben sichtbar. Nach zwei abgeschlossenen Aufgaben kann zuerst ohne sichtbares Material überlegt werden.
-- Freie Werkstatt: Zahlen bis 20 zerlegen; Zahlen bis 100 in Zehner und Einer darstellen, Zehner öffnen und jeweils zehn Einer bündeln.
+- Teilen: zusammenhängende Perlengruppen mit einer Schere trennen und die Stücke in passende Aussparungen legen. Danach den verbleibenden Teil benennen.
+- Zur Zehn: zum Beispiel die fünf in zwei und drei teilen, zwei zur Acht legen und danach die übrigen drei dazunehmen. Die ursprünglichen fünf Plätze bleiben sichtbar. Ganze Stücke werden bewegt; zu große Teile passen nicht in die Lücke.
+- Bauen: frei Einer und Zehner bis 100 nehmen, Zehner öffnen, zehn Einer bündeln und Material zurücklegen. Lose Einer sind in Fünferreihen angeordnet.
 
-Mausziehen, Pointer Events für Touch, Antippen von Steinen und anschließendem Ziel sowie Tastaturbedienung über Tab/Enter/Leertaste. Vorlesen ist optional und verwendet die Sprachausgabe des Browsers/Betriebssystems. Stimme und deren lokale oder externe Verarbeitung hängen vom Gerät ab.
+Eine große Arbeitsmatte und ein kurzer Auftrag ersetzen die Textkarten des ersten Prototyps. Beim ersten Öffnen eines Materials wird eine kurze Bewegung vorgemacht; „Zeig’s mir“ wiederholt sie. Die Vorführung verändert die Aufgabe nicht und endet sofort bei einer eigenen Materialhandlung. Elterninformationen und Quellen stehen hinter „Für Große“.
+
+Mausziehen, Pointer Events für Touch, Antippen eines Perlenstücks und anschließend des Ziels sowie Tastaturbedienung über Tab/Enter/Leertaste. In Bauen öffnet das Antippen eines Zehners diesen direkt; zehn lose Einer werden durch Antippen gebündelt. Materialien lassen sich auch auf die entsprechenden Ablagen ziehen. Antworten können angetippt oder in das Fragezeichen gezogen werden. Rückgängig und Neustart sind jederzeit verfügbar.
+
+Vorlesen ist optional und verwendet die Sprachausgabe des Browsers/Betriebssystems. Stimme und deren lokale oder externe Verarbeitung hängen vom Gerät ab. Keine Zeitbegrenzung, Punkte oder Ranglisten.
 
 ## Prüfen
 
-`npm test` prüft Mengenerhaltung, Zehnerübergänge und Grenzen des Materialmodells. `npm run check` prüft JavaScript-Syntax.
+`npm test` prüft Mengenerhaltung, Teilgruppen, Zehnerübergänge, Bündelung und Grenzen des Materialmodells. `npm run check` prüft JavaScript-Syntax. Interaktionen und Layout wurden im Browser mit Desktop-, Tablet- und schmalen Ansichten geprüft. Ein Test mit Fingereingabe auf einem echten iPad sowie Beobachtungen mit Kindern stehen noch aus.
 
 ## Pädagogische Grundlage
 
 - https://montessori-ami.org/questions/introducing-number-rods
 - https://montessori-ami.org/trainingvoices/control-of-error
+- https://www.montessori.org/montessori-101-what-is-a-montessori-material/
 - https://www.montessoricurriculum.org.au/curriculum-for-children-from-6-to-9/mathematics
 - https://mahiko.dzlm.de/zahlraum-bis-20-ueberblick/zahlen-zerlegen/grundlagen
 - https://mahiko.dzlm.de/zahlraum-bis-100-ueberblick/zahlen-zerlegen-0/grundlagen
 
-Ein erster Prototyp, kein diagnostisches Verfahren und kein geprüftes Montessori-Lehrmaterial. Der Schwerpunkt liegt auf dem Verständnis der Teilmengen, nicht auf Geschwindigkeit. Richtige Antworten belegen für sich allein keinen nichtzählenden Rechenweg.
+Ein Lernprototyp, kein diagnostisches Verfahren und kein geprüftes Montessori-Lehrmaterial. Übernommen werden überschaubare Materialien, isolierte Schwierigkeiten, kurze Vorführungen und Selbstkontrolle durch die Passform. Die digitalen Perlengruppen und die Fünferstruktur sind eine eigene didaktische Übertragung. Echtes Material vermittelt zusätzliche körperliche und räumliche Erfahrungen. Der Schwerpunkt liegt auf dem Verständnis der Teilmengen, nicht auf Geschwindigkeit. Richtige Antworten belegen für sich allein keinen nichtzählenden Rechenweg.
 
 ## Veröffentlichung
 
