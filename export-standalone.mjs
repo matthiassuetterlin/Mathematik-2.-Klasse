@@ -1,0 +1,14 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=dirname(fileURLToPath(import.meta.url));
+const output=process.argv[2];
+if(!output)throw new Error('Bitte den vollständigen Pfad der HTML-Ausgabedatei angeben.');
+let html=await readFile(resolve(root,'dist/index.html'),'utf8');
+const css=await readFile(resolve(root,'dist/style.css'),'utf8');
+const model=(await readFile(resolve(root,'dist/model.js'),'utf8')).replace(/^export /gm,'');
+const app=(await readFile(resolve(root,'dist/app.js'),'utf8')).replace(/^import .*from '\.\/model\.js';\r?\n/,'');
+html=html.replace('<link rel="stylesheet" href="style.css">',()=>`<style>${css}</style>`).replace('<script type="module" src="app.js"></script>',()=>`<script>(()=>{\n${model}\n${app}\n})();</script>`);
+await mkdir(dirname(resolve(output)),{recursive:true});
+await writeFile(resolve(output),html,'utf8');
+console.log(resolve(output));

@@ -1,0 +1,42 @@
+name: Zahlenwerkstatt auf GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Quellcode laden
+        uses: actions/checkout@v6
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Rechenlogik und JavaScript prüfen
+        run: |
+          npm test
+          npm run check
+      - name: GitHub Pages vorbereiten
+        uses: actions/configure-pages@v5
+      - name: Website bereitstellen
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - name: Veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v4

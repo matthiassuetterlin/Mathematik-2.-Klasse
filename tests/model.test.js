@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {BRIDGES,bridge,moveBridge,split,moveSplit,fromNumber,exchange,value} from '../dist/model.js';
+test('Every bridge preserves the total and the original addend',()=>{for(const [a,b] of BRIDGES){let s=bridge(a,b);for(let i=0;i<10-a;i++){s=moveBridge(s,[i]);assert.equal(a+s.moved.length+b-s.moved.length,a+b);assert.equal(s.moved.length+(b-s.moved.length),b);}assert.equal(a+s.moved.length,10);assert.equal(s.phase,'rest');assert.equal(b-s.moved.length,a+b-10);}});
+test('Whole groups move together; oversized or already-moved groups do not change state',()=>{let s=bridge(8,5);assert.equal(moveBridge(s,[0,1,2]),s);s=moveBridge(s,[0]);assert.equal(moveBridge(s,[0]),s);assert.equal(moveBridge(s,[-1]),s);s=moveBridge(s,[3]);assert.equal(s.phase,'rest');assert.deepEqual(s.moved,[0,3]);assert.equal(moveBridge(s,[2]),s);});
+test('Splitting keeps source identity and advances when the requested amount is moved',()=>{let s=split(5,2);s=moveSplit(s,[4]);assert.equal(s.phase,'place');assert.equal(moveSplit(s,[0,1]),s);s=moveSplit(s,[1]);assert.equal(s.phase,'rest');assert.deepEqual(s.moved,[4,1]);assert.equal(s.n-s.moved.length,3);});
+test('All numbers 0 to 100 survive repeated opening and bundling',()=>{for(let n=0;n<=100;n++){let s=fromNumber(n);while(s.tens){s=exchange(s,'open');assert.equal(value(s),n);}assert.equal(s.units,n);while(s.units>=10){s=exchange(s,'bundle');assert.equal(value(s),n);}assert.deepEqual(s,fromNumber(n));}});
+test('Invalid number inputs and impossible trades are rejected',()=>{for(const n of [-1,101,1.5,NaN,Infinity])assert.throws(()=>fromNumber(n));const z=fromNumber(0);assert.equal(exchange(z,'open'),z);assert.equal(exchange(z,'bundle'),z);});
