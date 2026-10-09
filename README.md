@@ -15,6 +15,8 @@ Node.js installieren, im Projektordner `npm start` ausführen und http://127.0.0
 
 Eine große Arbeitsmatte und ein kurzer Auftrag ersetzen die Textkarten des ersten Prototyps. Die vier Materialien liegen als klar getrennte Lern-Apps nebeneinander. Beim ersten Öffnen eines Materials wird eine kurze Bewegung vorgemacht; „Zeig’s mir“ wiederholt sie. Die Vorführung verändert die Aufgabe nicht und endet sofort bei einer eigenen Materialhandlung. Elterninformationen und Quellen stehen hinter „Für Große“.
 
+Das Layout ist für die Lernhandlung gegliedert: Lernbereiche stehen als eigene Navigation neben der Arbeitsfläche; Aufgabe, Material und Rückmeldung sind getrennte Ebenen. Über das Hamburger-Menü lassen sich vier Farbwelten, drei Schriften und drei Schriftgrößen wählen. Ein dunkler Modus ist ebenfalls vorhanden. Die Darstellung wird lokal im Browser gespeichert und verändert die Mathematikaufgaben nicht.
+
 Mausziehen, Pointer Events für Touch, Antippen eines Perlenstücks und anschließend des Ziels sowie Tastaturbedienung über Tab/Enter/Leertaste. In Bauen öffnet das Antippen eines Zehners diesen direkt; zehn lose Einer werden durch Antippen gebündelt. Materialien lassen sich auch auf die entsprechenden Ablagen ziehen. Antworten können angetippt oder in das Fragezeichen gezogen werden. Rückgängig und Neustart sind jederzeit verfügbar.
 
 Vorlesen ist optional und verwendet die Sprachausgabe des Browsers/Betriebssystems. Stimme und deren lokale oder externe Verarbeitung hängen vom Gerät ab. Keine Zeitbegrenzung, Punkte oder Ranglisten.
