@@ -12,7 +12,7 @@
 <body>
   <header class="header">
     <a href="#" class="brand" aria-label="Zahlenwerkstatt, Anfang"><span class="brand-dots" aria-hidden="true">⠿</span>Zahlenwerkstatt</a>
-    <button id="parents" class="parent-button">Für Große</button>
+    <div class="header-actions"><button id="settings-toggle" class="menu-button" aria-label="Darstellung öffnen" aria-expanded="false">☰</button><button id="parents" class="parent-button">Für Große</button></div>
   </header>
   <main>
     <nav class="shelf" aria-label="Material auswählen">
@@ -32,6 +32,14 @@
     </section>
 
   </main>
+  <aside id="settings-panel" class="settings-panel" aria-label="Darstellung" hidden>
+    <div class="settings-head"><div><span class="eyebrow">Deine Werkstatt</span><h2>Darstellung</h2></div><button id="settings-close" class="settings-close" aria-label="Darstellung schließen">×</button></div>
+    <section class="setting-group"><h3>Farbwelt</h3><div class="setting-options theme-options"><button data-theme="soft" aria-pressed="true"><i></i>Wolke</button><button data-theme="lagoon" aria-pressed="false"><i></i>Lagune</button><button data-theme="sun" aria-pressed="false"><i></i>Sonnenlicht</button><button data-theme="night" aria-pressed="false"><i></i>Nacht</button></div></section>
+    <section class="setting-group"><h3>Schrift</h3><div class="setting-options"><button data-font="round" aria-pressed="true">Rund</button><button data-font="print" aria-pressed="false">Druck</button><button data-font="calm" aria-pressed="false">Ruhig</button></div></section>
+    <section class="setting-group"><h3>Größe</h3><div class="setting-options size-options"><button data-size="small" aria-pressed="false">Klein</button><button data-size="medium" aria-pressed="true">Mittel</button><button data-size="large" aria-pressed="false">Groß</button></div></section>
+    <button id="dark-toggle" class="dark-toggle" aria-pressed="false"><span aria-hidden="true">◐</span><span><strong>Dunkler Modus</strong><small>angenehm bei wenig Licht</small></span><b aria-hidden="true">›</b></button>
+  </aside>
+  <div id="settings-backdrop" class="settings-backdrop" hidden></div>
   <dialog id="parent-dialog" aria-labelledby="parent-title"><div class="dialog-heading"><h2 id="parent-title">Für euch Große</h2><button id="close-dialog" class="round-button" aria-label="Schließen">×</button></div><div id="parent-copy"></div></dialog>
   <div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
   <script type="module" src="app.js?v=2.1.0"></script>
